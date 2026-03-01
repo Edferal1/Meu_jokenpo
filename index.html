@@ -73,8 +73,13 @@
         }
 
         // --- CÓDIGO DO SERVICE WORKER (Para o PWA funcionar offline) ---
+
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js');
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(() => console.log('Service Worker registrado'))
+                    .catch(err => console.log('Erro:', err));
+            });
         }
     </script>
 </body>
